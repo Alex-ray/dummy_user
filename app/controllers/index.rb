@@ -6,12 +6,21 @@ get '/' do
 end
 
 post '/login' do 
-
-# "#{params[:user_name], params[:password]}"
+  @email = params[:email]
+  @password = params[:password]
+  if !authorize(@email, @password)
+    redirect to '/login?valid=false'
+    session[:user] = nil
+  else
+    user = User.find_by_email(@email)
+    @user_name = user.user_name
+    session[:user_name] = @user_name
+    redirect to "/#{@user_name}"
+  end
 end
 
 get '/login' do 
-
+  @valid = params[:valid]
   erb :login
 end
 
@@ -33,11 +42,21 @@ post '/signup' do
 end
 
 get '/:user_name' do
-  @session = session[:user] 
+  @session = session[:user_name] 
   if @session == params[:user_name]
     @user_name = @session
     erb :logged_in
   else
     redirect to '/?access=denied'
+  end
+end
+
+def authorize(email, password)
+  user = User.find_by_email(email)
+  return false if user.nil?
+  if user.password == password
+    return true
+  else
+    return false
   end
 end

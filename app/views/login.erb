@@ -1,11 +1,11 @@
 <div class="container">
   <h1>Dummy_User.com</h1>
-  <% if @invalid %>
+  <% if @valid %>
     <p>ACCESS DENIED!</p>
   <% end %> 
   <form name="login" action="/login" method="post">
     <input id="email" name="email" type="email" placeholder="email@example.com" />
     <input id="pwd" type="password" name="password" placeholder="Password" />
-    <input id="button" type="submit" value="Sign Up" />
+    <input id="button" type="submit" value="Login" />
   </form>
 </div>
