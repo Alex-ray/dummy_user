@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Dummy_User.com</h1>
+  <% if @access %>
+    <p>Your access was <%= @access %>!</p>
+  <% end %>
+  <form name="login" action="/login" method="get">
+    <input id="button" type="submit" value="Login" />
+  </form>
+  <form name="signup" action="/signup" method="get">
+    <input id="button" type="submit" value="Signup" />
+  </form>
+</div>

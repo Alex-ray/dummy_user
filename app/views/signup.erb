@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Login</h1>
+  <% if @valid %>
+    <p> Username is already taken! </p>
+  <% end %>
+  <form name="signup" action="/signup" method="post">
+    <input id="user_name" name="user_name" type="text" placeholder="User Name" />
+    <input id="email" name="email" type="email" placeholder="email@example.com" />
+    <input id="password" name="password" type="password" placeholder="Password" />
+    <input id="button" type="submit" value="Sign Up" />
+  </form>
+</div>
